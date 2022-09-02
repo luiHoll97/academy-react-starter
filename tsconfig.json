@@ -21,6 +21,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-  ]
+    ".github/workflows/src"
+, "server/db.js", "server/server.js"  ]
 }
