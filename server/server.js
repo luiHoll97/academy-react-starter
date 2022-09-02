@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-//const pool = require("./db")
+const pool = require("./db")
 const port = process.env.PORT || 3001;
 
 //midleware
@@ -31,7 +31,8 @@ app.post("/todos", async (req, res) => {
 		console.log("Lui added a new task")
 	}
 	catch (err) {
-		console.log(err.message)
+		console.log(err)
+		res.status(500).send("sorry bud, error on server")
 		console.log("didnt work mate");
 	}
 }
@@ -48,7 +49,7 @@ app.get("/todos", async (req, res) => {
 		console.log("here are all the todos Lui")
 	}
 	catch (err) {
-		console.error(err.message)
+		console.error(err)
 	}
 })
 // get a todos
@@ -62,7 +63,7 @@ app.get("/todos/:id", async (req, res) => {
 		res.json(specificTodos.rows[0])
 	}
 	catch (err) {
-		console.error(err.message)
+		console.error(err)
 	}
 })
 
@@ -78,7 +79,7 @@ app.post("/todos/:id", async (req, res) => {
 		res.json("todo updated Lui, good job")
 	}
 	catch (err) {
-		console.error(err.message)
+		console.error(err)
 	}
 });
 
@@ -93,7 +94,7 @@ app.post("/todos/:id", async (req, res) => {
 		res.json("todo deleted Lui")
 	}
 	catch (err) {
-		console.error(err.message)
+		console.error(err)
 	}
 })
 
