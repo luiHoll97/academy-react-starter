@@ -1,13 +1,21 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const pool = require("./db")
+//const pool = require("./db")
+const port = process.env.PORT || 3001;
 
 //midleware
 app.use(cors());
 app.use(express.json());
 
 // routes
+
+// Test 2/9/22
+
+app.get("/hello", async (req,res) => {
+	console.log("Here's the time, Lui")
+	res.send("hello Lui" + new Date())
+})
 
 // create a todo
 
@@ -89,6 +97,4 @@ app.post("/todos/:id", async (req,res) => {
 })
 
 
-app.listen(5000, () => {
-	console.log("server has started on port 5000");
-});
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
