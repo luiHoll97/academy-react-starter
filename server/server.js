@@ -85,7 +85,7 @@ app.post("/todos/:id", async (req, res) => {
 
 // delete todo
 
-app.post("/todos/:id", async (req, res) => {
+app.delete("/todos/:id", async (req, res) => {
 	try {
 		const { id } = req.params;
 		const deleteTodo = await pool.query(
